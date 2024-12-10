@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Web</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Web.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="main-header">
+        <nav class="bg-white border-bottom box-shadow mb-3 pt-3 pb-3">
+            <div class="container">
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <a class="navbar-brand" asp-area="" asp-controller="Synonym" asp-action="Index">Synonyms app</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <input class="form-control" placeholder="Search..." id="SynonymSearch" data-filter="@Url.Action("Search", new { Name = "#QUERY#" })" data-redirect-url="/Synonym/" />
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Modal -->
+    @await Html.PartialAsync("AddSynonymModal")
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - Web - <a asp-area="" asp-controller="Synonym" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap-autocomplete/dist/js/bootstrap-autocomplete.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

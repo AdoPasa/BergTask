@@ -1,0 +1,30 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="text-center">
+    <h1 class="display-4">An error ocurred</h1>
+    <hr />
+    <p>
+        An error ocurred while proccesing the request.<br />
+        @switch (Model)
+        {
+            case "already-added":
+                <text>Synonym is already addded</text>
+                break;
+            case "invalid-parent":
+                <text>
+                    The selected parent is invalid <br />
+                    Try to add the synonym again <a href="#AddSynonymModal" data-bs-toggle="modal" data-bs-target="#AddSynonymModal">Here</a>
+                </text>
+                break;
+            default:
+                <text>
+                    An unhandled error ocurred
+                </text>
+                break;
+        }
+    </p>
+    <a asp-area="" asp-controller="Synonym" asp-action="Index">Return back to homepage</a>
+</div>

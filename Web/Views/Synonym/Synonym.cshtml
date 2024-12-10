@@ -1,0 +1,55 @@
+﻿@model SynonymResponse
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h1 class="display-4">@Model.Name</h1>
+    <hr />
+
+    <p>
+        @Model.Description
+    </p>
+
+    @if (Model.Meanings.Count != 0)
+    {
+        <hr />
+        <h3>Meanings</h3>
+
+        @foreach (var meaning in Model.Meanings)
+        {
+            <ul>
+                <li>
+                    Type: @meaning.Type<br />
+                    Definition: @meaning.Definition<br />
+                    @if (!string.IsNullOrEmpty(meaning.Phonetics))
+                    {
+                        <text>
+                            Phonetics: @meaning.Phonetics
+                        </text>    
+                    }
+                    @if (!string.IsNullOrEmpty(meaning.PhoneticsAudio))
+                    {
+                        <br/>
+                        <audio src="@meaning.PhoneticsAudio" controls></audio>
+                    }
+                </li>
+            </ul>
+        }
+    }
+
+
+    @if (Model.RelatedSynonyms.Count != 0)
+    {
+        <hr />
+
+        <h3>Synonyms</h3>
+
+        <div>
+            @foreach (var synonym in Model.RelatedSynonyms)
+            {
+                <a asp-action="Synonym" asp-route-name="@synonym.Name" class="btn btn-sm btn-outline-primary">@synonym.Name</a>
+            }
+        </div>
+    }
+</div>

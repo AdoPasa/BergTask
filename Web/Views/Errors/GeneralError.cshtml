@@ -1,0 +1,14 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="text-center">
+    <h1 class="display-4">An error ocurred</h1>
+    <hr/>
+    <p>
+        An error ocurred while proccesing the request.<br/>
+        Error code: @Model
+    </p>
+    <a asp-area="" asp-controller="Synonym" asp-action="Index">Return back to homepage</a>
+</div>

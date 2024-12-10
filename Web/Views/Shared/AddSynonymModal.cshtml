@@ -1,0 +1,38 @@
+﻿<!-- Modal -->
+<form id="AddSynonymForm" asp-action="Add" asp-controller="Synonym">
+    <div class="modal fade" id="AddSynonymModal" tabindex="-1" aria-labelledby="Add new synonym" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add a new synonym</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" class="form-control" id="ParentId" name="ParentId" placeholder="ParentId" />
+
+                    <!-- Form inside modal -->
+                    <div class="mb-3">
+                        <label for="Name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter the synonym name" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Description" class="form-label">Description</label>
+                        <textarea class="form-control" id="Description" name="Description" rows="3" placeholder="Enter the synonym description" required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Name" class="form-label">Parent</label>
+                        <input class="form-control" placeholder="Search..." id="ParentSynonymSearch" data-filter="@Url.Action("Search", new { Name = "#QUERY#" })"/>
+                    </div>
+
+                    <b>Additional definitions will be added automatically using an external API (if found)</b>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
